@@ -1,0 +1,19 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "Namaste-react-project",
+  "license": "ISC",
+  "author": "Shivam Mittal",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "build parcel index.html",
+    "test": "jest"
+  },
+  "dependencies": {
+    "parcel": "^2.14.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^6.30.0"
+  }
+}

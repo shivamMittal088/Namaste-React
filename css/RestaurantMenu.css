@@ -1,0 +1,27 @@
+#cardPage {
+  max-width: 700px;
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1.5px solid #ddd;
+  background-color: #fefefe;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#name h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+#items h4 {
+  margin: 6px 0;
+  color: #555;
+}
+
+#description p {
+  font-size: 16px;
+  color: #444;
+  margin: 15px 0;
+  line-height: 1.6;
+}
