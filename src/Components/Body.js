@@ -1,6 +1,8 @@
 import {ResData} from "..//DATA/Res-Data"
 import {useState,useEffect} from "react"
 import {Link} from "react-router-dom"
+import useOnlineStatus from "./useOnlineStatus"
+
 
 const Card = ({resdata})=> {
     const {title , price , duration , rating ,image} = resdata;
@@ -19,11 +21,22 @@ const Body = ()=> {
     // hooks
     const [query,setQuery] = useState("")
     const [listOfRest , setListOfRest] = useState(ResData)
+    const isOnline = useOnlineStatus();
+
     useEffect(()=>{
         console.log(query);
     },[query])
 
 
+    if(!isOnline)
+        return (
+            <div>
+            <h1>You are Offline !!</h1>
+            <h2>Hence unable to load ......</h2>
+            </div>
+        )
+
+        
     return (
         <div id="body">
             <div id="search-bar">
@@ -65,6 +78,7 @@ const Body = ()=> {
                 <button>Duration</button>
                 <button>Rating</button>
             </div>
+
 
 
 
