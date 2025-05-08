@@ -7,15 +7,20 @@ import About from "./Components/AboutUs.js"
 import Error from "./Components/Error.js"
 import { createBrowserRouter,RouterProvider,Outlet } from "react-router-dom"
 import RestaurantMenu from "./Components/restaurantMenu.js"
+import { Provider } from "react-redux"
+import AppStore from "./Components/AppStore.js"
+
 
 const AppLayout = ()=> {
     return (
+        <Provider store={AppStore}>
         <div>
             <Header />
             {/* <Body /> */}
             <Outlet/> 
              /** replaced by children routes  */ 
         </div>
+    </Provider>
     )
 };
 

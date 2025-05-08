@@ -1,15 +1,21 @@
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
+
 const Header = ()=> {
+    const CartItems = useSelector((store)=>
+            store.cart.items
+    )
+
     return (
         <div id="logo">
             <img src="src\DATA\images\logo\Res-logo.jpg" alt="Logo"></img>
             <ul>
-                <li><a href="/">Home</a></li>
+                <li><Link to="/">Home</Link></li>
                 <li><Link to="/about">About</Link></li>
-                <li><a href="">ContactUs</a></li>
-                <li><a href="">Cart</a></li>
-                <li><a href="">Login</a></li>
+                <li><Link to="">ContactUs</Link></li>
+                <li>Cart - ({CartItems.length} items)</li>
+                <li><Link to="">Login</Link></li>
             </ul>
         </div>
     )

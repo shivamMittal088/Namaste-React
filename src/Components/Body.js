@@ -3,7 +3,6 @@ import {useState,useEffect} from "react"
 import {Link} from "react-router-dom"
 import useOnlineStatus from "./useOnlineStatus"
 
-
 const Card = ({resdata})=> {
     const {title , price , duration , rating ,image} = resdata;
     return (
