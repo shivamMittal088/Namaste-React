@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 
 
 const Header = ()=> {
+    // subscribing to the store .
     const CartItems = useSelector((store)=>
             store.cart.items
     )
+    // useSelector hook  is used to read data from the store .
 
+    console.log(CartItems)
     return (
         <div id="logo">
             <img src="src\DATA\images\logo\Res-logo.jpg" alt="Logo"></img>

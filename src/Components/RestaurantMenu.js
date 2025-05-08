@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
 import CardPageData from "../DATA/CardPageData";
+import { useDispatch } from "react-redux";
+import { addItem } from "./CartSlice";
+
 
 const RestaurantMenu = () => {
-
+  const dispatch = useDispatch();
   const { Id } = useParams();
   console.log(Id);
 
@@ -42,6 +45,15 @@ const RestaurantMenu = () => {
             <li key={id}>{dish}</li>
           ))}
         </ul>
+      </div>
+
+      <div>
+        <button id="addItem"
+        onClick={()=>{
+          console.log("Add item to cart");
+          dispatch(addItem(restaurant.dishes[0]));
+        }}
+        >Add</button>
       </div>
     </div>
   );
