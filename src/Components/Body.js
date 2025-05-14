@@ -6,8 +6,8 @@ import useOnlineStatus from "./useOnlineStatus"
 const Card = ({resdata})=> {
     const {title , price , duration , rating ,image} = resdata;
     return (
-        <div id="card">
-            <img src = {image} alt="card-img"></img>
+        <div id="card" className="border-1">
+            <img src = {image} alt="card-img" className="w-60"></img>
             <h2>{title}</h2>
             <h4>{price}</h4>
             <h4>{duration}</h4>
@@ -37,9 +37,10 @@ const Body = ()=> {
 
         
     return (
-        <div id="body">
-            <div id="search-bar">
+        <div>
+            <div className="mt-3 mb-3" >
                 <input 
+                className="p-2 ml-3 w-300 border-1 rounded-xl"
                 type="text" 
                 placeholder="search-items-here" 
                 value = {query}
@@ -47,6 +48,7 @@ const Body = ()=> {
                     setQuery(e.target.value)
                 }}></input>
                 <button 
+                className="ml-3 w-19 border-1 h-9 rounded-2xl text-white bg-black hover:w-16 hover:h-5 transition-all duration-300 "
                 onClick={()=>{
                     console.log(query);
                         const filteredRes = ResData.filter((res)=>{
@@ -60,28 +62,43 @@ const Body = ()=> {
 
 
 
-            <div id="functions">
-                <button  >Top-Rated-Res</button>
-                <button 
-                onClick={()=>{
-                    // sort function will directly update ResData and we does not want that .
-                    // hence we have spread
-                    const sortedRes = [...ResData].sort((a, b) => {
-                        const priceA = parseInt(a.price.replace(/[^0-9]/g, ""));
-                        const priceB = parseInt(b.price.replace(/[^0-9]/g, ""));
-                        return priceA - priceB;
-                    });
-                    setListOfRest(sortedRes)
-                    console.log(sortedRes)
-                }}>Price</button>
-                <button>Duration</button>
-                <button>Rating</button>
-            </div>
+         <div id="functions" className="mb-6 flex flex-wrap items-center gap-4">
+
+  {/* Top Rated */}
+  <button className="px-4 py-2 w-36 border rounded-md text-black bg-yellow-300 hover:bg-yellow-400 hover:text-white transition duration-300">
+    Top-Rated-Res
+  </button>
+
+  {/* Price */}
+  <button
+    className="px-4 py-2 w-36 border rounded-md text-white bg-blue-600 hover:bg-blue-700 hover:text-gray-200 transition duration-300"
+    onClick={() => {
+      const sortedRes = [...ResData].sort((a, b) => {
+        const priceA = parseInt(a.price.replace(/[^0-9]/g, ""));
+        const priceB = parseInt(b.price.replace(/[^0-9]/g, ""));
+        return priceA - priceB;
+      });
+      setListOfRest(sortedRes);
+      console.log(sortedRes);
+    }}
+  >
+    Price
+  </button>
+
+  {/* Duration */}
+  <button className="px-4 py-2 w-36 border rounded-md text-white bg-green-600 hover:bg-green-700 hover:text-gray-200 transition duration-300">
+    Duration
+  </button>
+
+  {/* Rating */}
+  <button className="px-4 py-2 w-36 border rounded-md text-white bg-purple-600 hover:bg-purple-700 hover:text-gray-200 transition duration-300">
+    Rating
+  </button>
 
 
 
-
-            <div id="card-container">
+</div>
+            <div id="card-container"className="flex flex-wrap w-40 h-60">
                 {listOfRest.map((item)=>{
                     return (
                         <Link  
