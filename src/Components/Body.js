@@ -6,13 +6,15 @@ import useOnlineStatus from "./useOnlineStatus"
 const Card = ({resdata})=> {
     const {title , price , duration , rating ,image} = resdata;
     return (
-        <div id="card" className="border-1">
-            <img src = {image} alt="card-img" className="w-60"></img>
-            <h2>{title}</h2>
-            <h4>{price}</h4>
-            <h4>{duration}</h4>
-            <h4>{rating}</h4>
+        <div className="w-64 bg-white border rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-transform duration-300 p-4">
+        <img src={image} className="w-full h-40 object-cover rounded-lg mb-3" />
+        <h2 className="text-lg font-bold text-gray-900 mb-1">{title}</h2>
+        <div className="text-sm text-gray-600 mb-1">{price}</div>
+        <div className="flex justify-between text-sm text-gray-500">
+        <span>{duration}</span>
+        <span>{rating} ★</span>
         </div>
+    </div>
     )
 }
 
@@ -38,7 +40,7 @@ const Body = ()=> {
         
     return (
         <div>
-            <div className="mt-3 mb-3" >
+            <div className="mt-3 mb-3 sticky top-0 z-10 bg-white shadow-md p-2 m-1" >
                 <input 
                 className="p-2 ml-3 w-300 border-1 rounded-xl"
                 type="text" 
@@ -47,8 +49,9 @@ const Body = ()=> {
                 onChange={(e)=>{
                     setQuery(e.target.value)
                 }}></input>
+
                 <button 
-                className="ml-3 w-19 border-1 h-9 rounded-2xl text-white bg-black hover:w-16 hover:h-5 transition-all duration-300 "
+                className="ml-3 w-19 border-1 h-9 rounded-2xl text-white bg-black hover:w-17 hover:h-7 transition-all duration-300 "
                 onClick={()=>{
                     console.log(query);
                         const filteredRes = ResData.filter((res)=>{
@@ -65,7 +68,7 @@ const Body = ()=> {
          <div id="functions" className="mb-6 flex flex-wrap items-center gap-4">
 
   {/* Top Rated */}
-  <button className="px-4 py-2 w-36 border rounded-md text-black bg-yellow-300 hover:bg-yellow-400 hover:text-white transition duration-300">
+  <button className="ml-96 px-4 py-2 w-36 border rounded-md text-black bg-yellow-300 hover:bg-yellow-400 hover:text-white transition duration-300">
     Top-Rated-Res
   </button>
 
@@ -98,7 +101,7 @@ const Body = ()=> {
 
 
 </div>
-            <div id="card-container"className="flex flex-wrap w-40 h-60">
+            <div className="flex flex-wrap gap-6 gap-y-8 justify-center">
                 {listOfRest.map((item)=>{
                     return (
                         <Link  
