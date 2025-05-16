@@ -48,6 +48,16 @@ const Body = ()=> {
                 value = {query}
                 onChange={(e)=>{
                     setQuery(e.target.value)
+                    if(e.target.value === "")
+                    {
+                        setListOfRest(ResData);
+                        return;
+                    }
+                    const filteredRes = ResData.filter((res)=>{
+                            return (
+                            res.title.toLowerCase().includes(query.toLowerCase())
+                        )})
+                    setListOfRest(filteredRes)
                 }}></input>
 
                 <button 
